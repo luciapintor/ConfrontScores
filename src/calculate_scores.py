@@ -5,6 +5,12 @@ from src.get_ground_truth import get_ground_truth
 
 
 def calculate_scores(ground_truth, participant_summary):
+    """
+    This function iterates the three output files of each participant to calculate their scores.
+    :param ground_truth:
+    :param participant_summary:
+    :return:
+    """
     scores = []
 
     for i, c in enumerate(["A", "B", "C"]):
@@ -15,6 +21,13 @@ def calculate_scores(ground_truth, participant_summary):
 
 
 def calculate_score_single_capture(capture_id, capture_gt, capture_ps):
+    """
+    This function compares the ground truth with the capture score to evaluate the score of a single file.
+    :param capture_id:
+    :param capture_gt:
+    :param capture_ps:
+    :return:
+    """
     capture_score = CaptureScore(capture_id=capture_id)
 
     capture_score.calculate_error(devices_true=capture_gt["devices"], devices_count=capture_ps["devices"])

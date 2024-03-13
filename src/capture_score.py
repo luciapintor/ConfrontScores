@@ -24,7 +24,7 @@ class CaptureScore:
     def calculate_error(self, devices_true, devices_count):
         self.devices_true = devices_true
         self.devices_count = devices_count
-        self.devices_error = abs(self.devices_count - self.devices_count)
+        self.devices_error = abs(self.devices_true - self.devices_count)
 
     def calculate_v_measure(self, true_labels, calculated_labels):
         if len(true_labels) == len(calculated_labels):
