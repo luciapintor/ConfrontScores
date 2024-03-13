@@ -3,7 +3,7 @@ import os
 import pandas as pd
 
 
-def get_data(data_folder):
+def get_data_from_captures(data_folder):
     """
     This function gets the data needed to calculate the score of a participant of the challenge.
     There should be 3 files:
@@ -22,14 +22,31 @@ def get_data(data_folder):
     for data_file in data_files:
         if "_C.csv" in data_file:
             data_df = pd.read_csv(data_folder + data_file)
-            data_summary.append([None, int(data_df.devices.iloc[0]), int(data_df.discarded.iloc[0])])
+            data_summary.append(
+                {
+                    "labels": None,
+                    "devices": int(data_df.devices.iloc[0]),
+                    "discarded": int(data_df.discarded.iloc[0]),
+                }
+            )
 
         elif ".csv" in data_file:
             data_df = pd.read_csv(data_folder + data_file)
             labels = get_labels(data_df)
             devices = len(labels.unique())
             discarded = get_discarded(labels)
-            data_summary.append([list(labels), devices, discarded])
+
+            # there is the "-1" extra class
+            if discarded > 0:
+                devices -= 1
+
+            data_summary.append(
+                {
+                    "labels": list(labels),
+                    "devices": devices,
+                    "discarded": discarded,
+                }
+            )
 
     return data_summary
 
@@ -64,8 +81,8 @@ if __name__ == "__main__":
 
     data_folder = "data/participants/example/"
 
-    data_summary = get_data(data_folder)
+    data_summary = get_data_from_captures(data_folder)
 
     for ds in data_summary:
-        print("devices: {}".format(ds[1]))
-        print("discarded: {}".format(ds[2]))
+        print("devices: {}".format(ds["devices"]))
+        print("discarded: {}".format(ds["discarded"]))
