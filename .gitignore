@@ -1,0 +1,4 @@
+venv
+.idea
+src/data/participants
+src/data/reports
