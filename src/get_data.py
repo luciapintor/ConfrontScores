@@ -4,6 +4,16 @@ import pandas as pd
 
 
 def get_data(data_folder):
+    """
+    This function gets the data needed to calculate the score of a participant of the challenge.
+    There should be 3 files:
+    - capture_A.csv - it has two columns: id and label
+    - capture_B.csv - it has two columns: id and label
+    - capture_C.csv - it has two columns: devices and discarded
+    Challenge available at: https://sites.unica.it/net4u/confront-challenge-on-wifi-frame-fingerprinting-for-people-counting-and-trackingconfront/
+    :param data_folder:
+    :return:
+    """
     data_summary = []
 
     data_files = os.listdir(data_folder)

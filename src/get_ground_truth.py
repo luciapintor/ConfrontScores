@@ -4,6 +4,11 @@ from src.get_data import get_data
 
 
 def get_ground_truth():
+    """
+    This function returns an array with the list of labels of the ground truth, the number of devices,
+    and discarded samples.
+    :return:
+    """
     gt_folder = "data/ground_truth/"
 
     ground_truth = get_data(gt_folder)
