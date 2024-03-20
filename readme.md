@@ -16,8 +16,8 @@ In order to run the program you must:
 6. your results will be stored in the folder "/src/data/reports/".
 
 Note: the format of your files should be:
-- capture_A.csv: a csv file with two columns called id and labels; every row refers to a packet of the pcap file.
-- capture_B.csv: a csv file with two columns called id and labels; every row refers to a packet of the pcap file.
+- capture_A.csv: a csv file with two columns called id and label; every row refers to a packet of the pcap file.
+- capture_B.csv: a csv file with two columns called id and label; every row refers to a packet of the pcap file.
 - capture_C.csv: a csv file with two columns called devices and discarded; there is only one row with the number of devices counted by the algorithm and the number of discarded samples.
 
 All csv files should use "," as column separator.
